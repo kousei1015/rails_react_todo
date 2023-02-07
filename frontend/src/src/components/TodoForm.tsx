@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Todo, TodosProps } from "../../model";
+import { CheckBox } from "./TodoFormStyles";
 
 const TodoForm: React.FC<TodosProps> = ({ todos, setTodos }) => {
   const [nameInput, setNameInput] = useState("");
@@ -31,7 +32,7 @@ const TodoForm: React.FC<TodosProps> = ({ todos, setTodos }) => {
   return (
     <>
       <h1>TodoList</h1>
-      <input
+      <CheckBox
         type="text"
         value={nameInput}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {

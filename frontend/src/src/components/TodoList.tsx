@@ -3,29 +3,6 @@ import React, { useState } from "react";
 import { Todo, TodosProps } from "../../model";
 
 const TodoList: React.FC<TodosProps> = ({ todos, setTodos }) => {
-  const [nameInput, setNameInput] = useState("");
-
-  const addTodo = () => {
-    const packet = {
-      name: nameInput,
-    };
-
-    axios
-      .post<Todo>("http://localhost:3000/api/v1/todos", packet)
-      .then((res) => {
-        setTodos([
-          {
-            id: res.data.id,
-            name: res.data.name,
-            is_completed: res.data.is_completed,
-          },
-          ...todos,
-        ]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
   const editTodo = (id: number) => {
     const selectedTodo = todos.find((todo) => todo.id === id);
@@ -51,15 +28,6 @@ const TodoList: React.FC<TodosProps> = ({ todos, setTodos }) => {
 
   return (
     <>
-      <h1>TodoList</h1>
-      <input
-        type="text"
-        value={nameInput}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          setNameInput(e.target.value);
-        }}
-      />
-      <button onClick={addTodo}>追加</button>
       <div style={{background: "tomato", padding: "1rem"}}>
         <h1>完了済みのタスク</h1>
         {todos.map((todo, key) => (

@@ -1,7 +1,8 @@
 import react, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
-import TodoList from './src/components/Todo';
+import TodoList from './src/components/TodoList';
+import TodoForm from './src/components/TodoForm';
 import { Todo } from './model';
 
 
@@ -17,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <div>App</div>
+      <TodoForm todos={todos} setTodos={setTodos} />
       <TodoList todos={todos} setTodos={setTodos}/>
     </div>
   )
